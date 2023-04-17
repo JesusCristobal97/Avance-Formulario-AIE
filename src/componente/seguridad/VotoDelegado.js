@@ -9,11 +9,11 @@ const VotoDelegado = () => {
 
     const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
             },
             buttonsStyling: false
-          })
+        })
 
         swalWithBootstrapButtons.fire({
             title: 'Usted lleva voto delegado, desea aplicar la misma opcion de voto a todos sus delegados',
@@ -23,22 +23,22 @@ const VotoDelegado = () => {
             confirmButtonText: 'Confirmar',
             cancelButtonText: 'Cancelar',
             reverseButtons: true
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              swalWithBootstrapButtons.fire(
+            swalWithBootstrapButtons.fire(
                 'Confirmado',
                 'Su voto ha sido enviado.',
                 'success'
-              )
+            )
             } else if (
               /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
+            result.dismiss === Swal.DismissReason.cancel
             ) {
-              swalWithBootstrapButtons.fire(
+            swalWithBootstrapButtons.fire(
                 'Cancelado',
                 'Puede revisar una vez mas',
                 'error'
-              )
+            )
             }
         });
 

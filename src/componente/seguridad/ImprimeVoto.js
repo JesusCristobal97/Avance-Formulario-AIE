@@ -25,7 +25,7 @@ const ImprimeVoto = () => {
     const handleRadioChange = (event) => {
         setValue(event.target.value);
         setError(false);
-      };
+    };
     
     const ValidateBotonesRadio = e => {
         const{name, value} = e.target;
@@ -44,23 +44,21 @@ const ImprimeVoto = () => {
 
     const useStyles = makeStyles({
         table: {
-          minWidth: 650,
+        minWidth: 650,
         },
-      });
-      
-      function createData(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
+    });
+    function createData(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
         return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
-      }
-      
-      const rows = [
+    }
+    const rows = [
         createData('Pedro Miguel–Socio: 5546',),
         createData('María Bernar–Socio: 798465',),
         createData('Esteban Ruiz–Socio: 346',),
         createData('Sonia Marín–Socio: 6506',),
         createData('Juan Manuel – Socio: 5461', 356, 16.0, 49),
-      ];
+    ];
 
-      const classes = useStyles();
+    const classes = useStyles();
     return (
         <Container component="main" maxWidth="md" justify="center">
         <div style={style.paper}>

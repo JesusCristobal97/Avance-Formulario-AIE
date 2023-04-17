@@ -21,8 +21,8 @@ const [selectedValue1, setSelectedValue1] = React.useState('a');
 const [selectedValue2, setSelectedValue2] = React.useState('a');
 
     const handleChange = (event) => {
-          setSelectedValue(event.target.value);
-          console.log(rows)
+        setSelectedValue(event.target.value);
+        console.log(rows)
         };
 
     const handleChange1 = (event) => {
@@ -38,45 +38,44 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
     
         const useStyles = makeStyles({
             table: {
-              minWidth: 650,
+            minWidth: 650,
             },
-          });
-          
-          function createData(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
+        });
+        
+        function createData(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
             return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
-          }
-          
-          const rows = [
+        }
+        
+        const rows = [
             createData('Pedro Miguel–Socio: 5546')
-          ];
+        ];
 
-          function createData1(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
+        function createData1(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
             return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
-          }
+        }
 
-          const rows1 = [
+        const rows1 = [
             createData1('María Bernar–Socio: 798465')
-          ];
+        ];
 
-          function createData2(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
+        function createData2(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
             return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
-          }
+        }
 
-          const rows2 = [
+        const rows2 = [
             createData2('Esteban Ruiz–Socio: 346')
-          ];
+        ];
     
         const classes = useStyles();
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
             },
             buttonsStyling: false
-          })
-          
-          swalWithBootstrapButtons.fire({
+        })
+        swalWithBootstrapButtons.fire({
             title: 'Por favor revise su voto y confirme si todo esta correcto',
             text: "Presione confirmar si esta deacuerdo",
             icon: 'warning',
@@ -84,24 +83,24 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
             confirmButtonText: 'Confirmar',
             cancelButtonText: 'Cancelar',
             reverseButtons: true
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              swalWithBootstrapButtons.fire(
+            swalWithBootstrapButtons.fire(
                 'Confirmado!',
                 'Su voto a sido confirmado y enviado.',
                 'success'
-              )
+            )
             } else if (
               /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
+            result.dismiss === Swal.DismissReason.cancel
             ) {
-              swalWithBootstrapButtons.fire(
+            swalWithBootstrapButtons.fire(
                 'Cancelado',
                 'Puede revisar una vez mas antes de enviar',
                 'error'
-              )
+            )
             }
-          });
+        });
         
         const BotonEnviar = e => {
             e.preventDefault();
