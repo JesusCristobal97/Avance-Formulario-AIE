@@ -7,8 +7,8 @@ import VotoDelegado from "./componente/seguridad/VotoDelegado";
 import Enviar from "./componente/seguridad/Enviar"
 import BotonesRadio from "./componente/seguridad/BotonesRadio"
 import ImprimeVoto from "./componente/seguridad/ImprimeVoto";
-import JuegoCerrado from "./componente/seguridad/JuegoCerrado";
-import JuegoIniciado from "./componente/seguridad/JuegoIniciado";
+import Juego from "./componente/seguridad/Juego";
+;
 
 function App() {
 
@@ -16,8 +16,8 @@ return (
 <React.Fragment>
       <MuithemeProvider theme={theme}>
         <Grid container>
-        <JuegoCerrado/>
-        <JuegoIniciado/>
+        <Juego/>
+        
 
           
         </Grid>
