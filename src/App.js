@@ -16,7 +16,8 @@ return (
 <React.Fragment>
       <MuithemeProvider theme={theme}>
         <Grid container>
-        <Juego/>
+        <Acceso/>
+        
         
 
           

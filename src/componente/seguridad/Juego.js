@@ -22,11 +22,13 @@ const Juego = () => {
 
 
     //Funcion para selectores
+
     const [age, setAge] = React.useState('');
+    const Suppliers = ['Ten', 'Twenty', 'Thirty'];
 
     const handleChangeSelect = (event) => {
-        setAge(event.target.value);
-        console.log(age)
+    setAge(event.target.value);
+        console.log(age);
     };
 
     //Funcion para botones de radio
@@ -184,46 +186,26 @@ const Juego = () => {
                         <Grid container spacing={3}>
                             <Grid item xs={12} sm={6}>
                                 <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
+                                    id="demo"
                                     value={age}
                                     onChange={handleChangeSelect}
                                     fullWidth
                                     >
-                                    <MenuItem value={10}>Ten</MenuItem>
-                                    <MenuItem value={20}>Twenty</MenuItem>
-                                    <MenuItem value={30}>Thirty</MenuItem>
+                                    <MenuItem value="10">Ten</MenuItem>
+                                    <MenuItem value="20">Twenty</MenuItem>
+                                    <MenuItem value="30">Thirty</MenuItem>
                                 </Select>
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
+                                    id="demo"
                                     value={age}
                                     onChange={handleChangeSelect}
                                     fullWidth
                                     >
-                                    <MenuItem 
-                                            id="Ten" 
-                                            value={10}
-                                            onChange={age}
-                                            >
-                                                Ten
-                                    </MenuItem>
-                                    <MenuItem 
-                                            id="Twenty" 
-                                            value={20}
-                                            onChange={age}
-                                            >
-                                                Twenty
-                                    </MenuItem>
-                                    <MenuItem 
-                                            id="Thirty" 
-                                            value={30}
-                                            onChange={age}
-                                            >
-                                                Thirty
-                                    </MenuItem>
+                                    <MenuItem value="10">Ten</MenuItem>
+                                    <MenuItem value="20">Twenty</MenuItem>
+                                    <MenuItem value="30">Thirty</MenuItem>
                                 </Select>
                             </Grid>
                         </Grid>
@@ -271,3 +253,12 @@ const Juego = () => {
 
 export default Juego; 
 
+/*const handleChangeSelect = (event) => {
+    setAge(event.target.value);
+    console.log(age)
+};*/
+
+/*<MenuItem value="10">Ten</MenuItem>
+                                    <MenuItem value="20">Twenty</MenuItem>
+                                    <MenuItem value="30">Thirty</MenuItem>
+*/
