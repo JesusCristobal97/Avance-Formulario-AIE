@@ -38,7 +38,7 @@ import Swal from 'sweetalert2'
                 'success'
             )
             } else if (
-              /* Read more about handling dismissals below */
+            
             result.dismiss === Swal.DismissReason.cancel
             ) {
             swalWithBootstrapButtons.fire(
