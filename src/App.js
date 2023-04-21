@@ -9,6 +9,7 @@ import Enviar from "./componente/seguridad/Enviar";
 import BotonesRadio from "./componente/seguridad/BotonesRadio";
 import ImprimeVoto from "./componente/seguridad/ImprimeVoto";
 import Juego from "./componente/seguridad/Juego";
+import Vote from "./componente/seguridad/Vote";
 ;
 
 function App() {
@@ -26,6 +27,7 @@ return (
                 <Route exact path="/auth/botonesradio" component={BotonesRadio} />
                 <Route exact path="/auth/imprimevoto" component={ImprimeVoto} /> 
                 <Route exact path="/auth/juego" component={Juego} />
+                <Route exact path="/auth/Vote" component={Vote} />
             </Switch>
         </Grid>
       </MuithemeProvider>
