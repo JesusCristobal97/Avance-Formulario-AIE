@@ -11,54 +11,88 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Radio from '@material-ui/core/Radio';
+import Swal from 'sweetalert2'
 
 
-const ImprimeVoto = () => {
+    const ImprimeVoto = () => {
 
     const [usuario, setUsuario] = useState({
-        password :''
+        PedroMiguel : '',
+        MaríaBernar : '',
+        EstebanRuiz : ''
         });
-   
-    const [value, setValue] = React.useState('');
-    const [error, setError] = React.useState(false);
 
-    const handleRadioChange = (event) => {
-        setValue(event.target.value);
-        setError(false);
-    };
+    const [selectedValue, setSelectedValue] = React.useState('a');
     
-    const ValidateBotonesRadio = e => {
-        const{name, value} = e.target;
-        setUsuario( anterior => ({
-            ...anterior,
-            [name] : value
-        }))
-        console.log(value);
-        setUsuario(value);
-    }
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
+        console.log(selectedValue)
+        };
+    
+        const useStyles = makeStyles({
+            table: {
+            minWidth: 650,
+            },
+        });
+        
+        function createData(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
+            return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
+        }
+        
+        const rows = [
+            createData('Pedro Miguel–Socio: 5546')
+        ];
+        
+        const rows1 = [
+            createData('Esteban Ruiz–Socio: 346')
+        ];
+        
+        const rows2 = [
+            createData('María Bernar–Socio: 798465')
+        ];//, 'Esteban Ruiz–Socio: 346', 'María Bernar–Socio: 798465'//
 
-    const EnviarVoto = e => {
-        e.preventDefault();
-        console.log("Imprime los valores de memoria temporal de usuario", usuario);
-    }
+    
+        const classes = useStyles();
 
-    const useStyles = makeStyles({
-        table: {
-        minWidth: 650,
-        },
-    });
-    function createData(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
-        return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
-    }
-    const rows = [
-        createData('Pedro Miguel–Socio: 5546',),
-        createData('María Bernar–Socio: 798465',),
-        createData('Esteban Ruiz–Socio: 346',),
-        createData('Sonia Marín–Socio: 6506',),
-        createData('Juan Manuel – Socio: 5461', 356, 16.0, 49),
-    ];
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: 'Desea imprimir su votacion ?',
+            text: "Presione confirmar si esta deacuerdo",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Confirmar',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+                'Confirmado!',
+                'Su voto sera impreso.',
+                'success'
+            )
+            } else if (
+            
+            result.dismiss === Swal.DismissReason.cancel
+            ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelado',
+                'No se va imprimir su voto, pero lo puede ver en la web',
+                'error'
+            )
+            }
+        });
+        
+        const BotonEnviar = e => {
+            e.preventDefault();
+            console.log("imprime los valores de memoria temporal de usuario", usuario);
+        }
 
-    const classes = useStyles();
     return (
         <Container component="main" maxWidth="md" justify="center">
         <div style={style.paper}>
@@ -97,34 +131,112 @@ const ImprimeVoto = () => {
                                     <TableCell component="th" scope="row">
                                         {row.name}
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteLuis}
+                                    <TableCell align="right">{row.PedroMiguel}
                                     <Radio
-                                        onChange={handleRadioChange}
-                                        error={error}
-                                        checked={false}
-                                        value={value}
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'A' }}
+                                        id="PresidenteLuis1"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteLuis1'}
+                                        value="PresidenteLuis1"
+                                        name="PresidenteLuis1"
+                                        inputProps={{ 'aria-label': 'PresidenteLuis1' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteJuan}
+                                    <TableCell align="right">{row.PedroMiguel}
                                     <Radio
-                                        onChange={handleRadioChange}
-                                        error={error}
-                                        checked={false}
-                                        value={value}
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'A' }}
+                                        id="PresidenteJuan2"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteJuan2'}
+                                        value="PresidenteJuan2"
+                                        name="PresidenteJuan2"
+                                        inputProps={{ 'aria-label': 'PresidenteJuan2' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.VotoBlanco}
+                                    <TableCell align="right">{row.PedroMiguel}
                                     <Radio
-                                        onChange={handleRadioChange}
-                                        error={error}
-                                        checked={false}
-                                        value={value}
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'A' }}
+                                        id="VotoBlanco3"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'VotoBlanco3'}
+                                        value="VotoBlanco3"
+                                        name="VotoBlanco3"
+                                        inputProps={{ 'aria-label': 'VotoBlanco3' }}
+                                        />
+                                    </TableCell>
+                                    </TableRow>
+                                ))}
+                                </TableBody>
+                                <TableBody>
+                                {rows1.map((row) => (
+                                    <TableRow key={row.name}>
+                                    <TableCell component="th" scope="row">
+                                        {row.name}
+                                    </TableCell>
+                                    <TableCell align="right">{row.EstebanRuiz}
+                                    <Radio
+                                        id="PresidenteLuis"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteLuis4'}
+                                        value="PresidenteLuis4"
+                                        name="PresidenteLuis4"
+                                        inputProps={{ 'aria-label': 'PresidenteLuis4' }}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">{row.EstebanRuiz}
+                                    <Radio
+                                        id="PresidenteJuan5"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteJuan5'}
+                                        value="PresidenteJuan5"
+                                        name="PresidenteJuan5"
+                                        inputProps={{ 'aria-label': 'PresidenteJuan5' }}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">{row.EstebanRuiz}
+                                    <Radio
+                                        id="VotoBlanco6"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'VotoBlanco6'}
+                                        value="VotoBlanco6"
+                                        name="VotoBlanco6"
+                                        inputProps={{ 'aria-label': 'VotoBlanco6' }}
+                                        />
+                                    </TableCell>
+                                    </TableRow>
+                                ))}
+                                </TableBody>
+                                <TableBody>
+                                {rows2.map((row) => (
+                                    <TableRow key={row.name}>
+                                    <TableCell component="th" scope="row">
+                                        {row.name}
+                                    </TableCell>
+                                    <TableCell align="right">{row.MaríaBernar}
+                                    <Radio
+                                        id="PresidenteLuis7"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteLuis7'}
+                                        value="PresidenteLuis7"
+                                        name="PresidenteLuis7"
+                                        inputProps={{ 'aria-label': 'PresidenteLuis7' }}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">{row.MaríaBernar}
+                                    <Radio
+                                        id="PresidenteJuan8"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteJuan8'}
+                                        value="PresidenteJuan8"
+                                        name="PresidenteJuan8"
+                                        inputProps={{ 'aria-label': 'PresidenteJuan8' }}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">{row.MaríaBernar}
+                                    <Radio
+                                        id="VotoBlanco9"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'VotoBlanco9'}
+                                        value="VotoBlanco9"
+                                        name="VotoBlanco9"
+                                        inputProps={{ 'aria-label': 'VotoBlanco9' }}
                                         />
                                     </TableCell>
                                     </TableRow>
@@ -135,7 +247,7 @@ const ImprimeVoto = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <Box width="20%" margin="auto">
-                                <Button onClick={EnviarVoto} type="submit" variant="contained" color="primary" style={style.form} >
+                                <Button onClick={()=>swalWithBootstrapButtons(BotonEnviar)} type="submit" variant="contained" color="primary" style={style.form} >
                                     Enviar Voto
                                 </Button>
                             </Box>
@@ -291,4 +403,4 @@ const ImprimeVoto = () => {
     );
 };
 
-export default ImprimeVoto; 
+export default ImprimeVoto;  

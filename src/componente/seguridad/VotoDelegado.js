@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from '../Tool/Style';
 import { Avatar, Button, Container, Typography, Grid, Box, List, ListItemText } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
 import Swal from 'sweetalert2'
 
 
-const VotoDelegado = () => {
+    const VotoDelegado = () => {
+
+    const [usuario, setUsuario] = useState({
+            JuanManuel : 'Socio: 5461',
+            Votosi : '45',
+            Votose : '70',
+            Votodelegado : '180'
+            });
 
     const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -40,6 +47,7 @@ const VotoDelegado = () => {
                 'error'
             )
             }
+                console.log("Los resultados de la votacion son: ", usuario);
         });
 
     return (

@@ -7,43 +7,15 @@ import LockIcon from '@material-ui/icons/Lock';
 const Enviar = () => {
 
     const [usuario, setUsuario] = useState({
-        password :''
+        JuanManuel : 'Socio: 5461',
+        Votosi : '45',
+        Votose : '70',
+        Votodelegado : '180'
         });
-
-    const [ErrorPassword, setErrorPassword] = useState(0);
-    
-    const ValidateEnviar = e => {
-        const{name, value} = e.target;
-        setUsuario( anterior => ({
-            ...anterior,
-            [name] : value
-        }))
-        console.log(value);
-        const minValue=value.length>4;
-        const maxValue=value.length<16;
-        const onliLet=/^.{4,16}$/.test(value);
-
-        console.log("min",minValue);
-        console.log("maxValue",maxValue);
-        console.log("onliLet",onliLet);
-
-        if (onliLet === false) {
-            setErrorPassword(1);
-        } else if (!minValue) {
-            setErrorPassword(2);
-        } else {
-            setErrorPassword(3);
-        }
-
-        if (onliLet === true && minValue && maxValue) {
-            setErrorPassword(0);
-        }
-        setUsuario(value);
-    }
 
     const BotonEnviar = e => {
         e.preventDefault();
-        console.log("Imprime los valores de memoria temporal de usuario", usuario);
+        console.log("Los resultados de la votacion son: ", usuario);
     }
 
     return (

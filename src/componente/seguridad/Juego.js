@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import style from '../Tool/Style';
-import { Avatar, Button, Container, TextField, Typography, Grid, Box, Paper } from '@material-ui/core';
-import LockIcon from '@material-ui/icons/Lock';
+import { Container, TextField, Typography, Grid, Box } from '@material-ui/core';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Select from '@material-ui/core/Select';
@@ -12,13 +11,48 @@ import Radio from '@material-ui/core/Radio';
 
 const Juego = () => {
 
-    const [data,setData]=useState('');
+    const [data, setData]=useState('');
     //Funcion para los editores de textos
     const handleChange =(e,editor)=>{
         setData(editor.getData());
     }
     //Funcion para titulo y logo
+    
+    const [usuario, setUsuario] = useState({
+        titulo :'',
+        logo :''
+        });
 
+    const [ErrorTitulo, setErrorTitulo] = useState(0);
+    
+    const ValidateTitulo = e => {
+        const{name, value} = e.target;
+        setUsuario( anterior => ({
+            ...anterior,
+            [name] : value
+        }))
+        console.log(value);
+        const minValue=value.length>4;
+        const maxValue=value.length<16;
+        const onliLet=/^[a-zA-Z0-9\_\-]{4,16}$/.test(value);
+
+        console.log("min",minValue);
+        console.log("maxValue",maxValue);
+        console.log("onliLet",onliLet);
+
+        if (onliLet === false) {
+            setErrorTitulo(1);
+        } else if (!minValue) {
+            setErrorTitulo(2);
+        } else {
+            setErrorTitulo(3);
+        }
+
+        if (onliLet === true && minValue && maxValue) {
+            setErrorTitulo(0);
+        }
+        setUsuario(value);
+    };
 
 
     //Funcion para selectores
@@ -110,10 +144,13 @@ const Juego = () => {
                         <Grid container spacing={3}>
                             <Grid item xs={12} sm={6}>
                                 <TextField 
-                                    id="Titulo"
+                                    id="titulo"
                                     required
-                                    name="Titulo"
+                                    name="titulo"
+                                    onChange={usuario.titulo}
+                                    value={ValidateTitulo}
                                     variant="outlined" 
+                                    error={ErrorTitulo}
                                     type="text" 
                                     label="Ingrese su titulo" 
                                     helperText="Ingrese un titulo valido"
@@ -122,10 +159,13 @@ const Juego = () => {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField 
-                                        id="Logo"
+                                        id="logo"
                                         required
-                                        name="Logo"
+                                        name="logo"
+                                        onChange={usuario.logo}
+                                        value={ValidateTitulo}
                                         variant="outlined" 
+                                        error={ErrorTitulo}
                                         type="text" 
                                         label="Ingrese su Logo" 
                                         helperText="Ingrese un logo valido"
@@ -203,27 +243,9 @@ const Juego = () => {
                                     onChange={handleChangeSelect}
                                     fullWidth
                                     >
-                                    <MenuItem 
-                                            id="Ten" 
-                                            value={10}
-                                            onChange={age}
-                                            >
-                                                Ten
-                                    </MenuItem>
-                                    <MenuItem 
-                                            id="Twenty" 
-                                            value={20}
-                                            onChange={age}
-                                            >
-                                                Twenty
-                                    </MenuItem>
-                                    <MenuItem 
-                                            id="Thirty" 
-                                            value={30}
-                                            onChange={age}
-                                            >
-                                                Thirty
-                                    </MenuItem>
+                                    <MenuItem value={10}>Ten</MenuItem>
+                                    <MenuItem value={20}>Twenty</MenuItem>
+                                    <MenuItem value={30}>Thirty</MenuItem>
                                 </Select>
                             </Grid>
                         </Grid>

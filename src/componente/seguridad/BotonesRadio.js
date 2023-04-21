@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from '../Tool/Style';
 import { Avatar, Button, Container, Typography, Grid, Box, ListItemText, List } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
@@ -14,27 +14,20 @@ import Radio from '@material-ui/core/Radio';
 import Swal from 'sweetalert2'
 
 
-const BotonesRadio = () => {
+    const BotonesRadio = () => {
 
-const [selectedValue, setSelectedValue] = React.useState('a');
-const [selectedValue1, setSelectedValue1] = React.useState('a');
-const [selectedValue2, setSelectedValue2] = React.useState('a');
+    const [usuario, setUsuario] = useState({
+        PedroMiguel : '',
+        MaríaBernar : '',
+        EstebanRuiz : ''
+        });
 
+    const [selectedValue, setSelectedValue] = React.useState('a');
+    
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
-        console.log(rows)
+        console.log(selectedValue)
         };
-
-    const handleChange1 = (event) => {
-        setSelectedValue1(event.target.value);
-        console.log(rows)
-        };
-
-    const handleChange2 = (event) => {
-        setSelectedValue2(event.target.value);
-        console.log(rows)
-        };
-    
     
         const useStyles = makeStyles({
             table: {
@@ -49,22 +42,15 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
         const rows = [
             createData('Pedro Miguel–Socio: 5546')
         ];
-
-        function createData1(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
-            return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
-        }
-
+        
         const rows1 = [
-            createData1('María Bernar–Socio: 798465')
+            createData('Esteban Ruiz–Socio: 346')
         ];
-
-        function createData2(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
-            return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
-        }
-
+        
         const rows2 = [
-            createData2('Esteban Ruiz–Socio: 346')
-        ];
+            createData('María Bernar–Socio: 798465')
+        ];//, 'Esteban Ruiz–Socio: 346', 'María Bernar–Socio: 798465'//
+
     
         const classes = useStyles();
 
@@ -91,7 +77,7 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
                 'success'
             )
             } else if (
-              /* Read more about handling dismissals below */
+            
             result.dismiss === Swal.DismissReason.cancel
             ) {
             swalWithBootstrapButtons.fire(
@@ -104,7 +90,7 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
         
         const BotonEnviar = e => {
             e.preventDefault();
-            console.log('imprime los valores de memoria temporal de usuario', selectedValue)
+            console.log("imprime los valores de memoria temporal de usuario", usuario);
         }
 
     return (
@@ -145,31 +131,34 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
                                     <TableCell component="th" scope="row">
                                         {row.name}
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteLuis}
+                                    <TableCell align="right">{row.PedroMiguel}
                                     <Radio
+                                        id="PresidenteLuis1"
                                         onChange={handleChange}
-                                        checked={selectedValue === 'a'}
-                                        value="a"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'A' }}
+                                        checked={selectedValue === 'PresidenteLuis1'}
+                                        value="PresidenteLuis1"
+                                        name="PresidenteLuis1"
+                                        inputProps={{ 'aria-label': 'PresidenteLuis1' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteJuan}
+                                    <TableCell align="right">{row.PedroMiguel}
                                     <Radio
+                                        id="PresidenteJuan2"
                                         onChange={handleChange}
-                                        checked={selectedValue === 'b'}
-                                        value="b"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'B' }}
+                                        checked={selectedValue === 'PresidenteJuan2'}
+                                        value="PresidenteJuan2"
+                                        name="PresidenteJuan2"
+                                        inputProps={{ 'aria-label': 'PresidenteJuan2' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.VotoBlanco}
+                                    <TableCell align="right">{row.PedroMiguel}
                                     <Radio
+                                        id="VotoBlanco3"
                                         onChange={handleChange}
-                                        checked={selectedValue === 'c'}
-                                        value="c"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'C' }}
+                                        checked={selectedValue === 'VotoBlanco3'}
+                                        value="VotoBlanco3"
+                                        name="VotoBlanco3"
+                                        inputProps={{ 'aria-label': 'VotoBlanco3' }}
                                         />
                                     </TableCell>
                                     </TableRow>
@@ -181,31 +170,34 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
                                     <TableCell component="th" scope="row">
                                         {row.name}
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteLuis}
+                                    <TableCell align="right">{row.EstebanRuiz}
                                     <Radio
-                                        onChange={handleChange1}
-                                        checked={selectedValue1 === 'a'}
-                                        value="a"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'A' }}
+                                        id="PresidenteLuis"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteLuis4'}
+                                        value="PresidenteLuis4"
+                                        name="PresidenteLuis4"
+                                        inputProps={{ 'aria-label': 'PresidenteLuis4' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteJuan}
+                                    <TableCell align="right">{row.EstebanRuiz}
                                     <Radio
-                                        onChange={handleChange1}
-                                        checked={selectedValue1 === 'b'}
-                                        value="b"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'B' }}
+                                        id="PresidenteJuan5"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteJuan5'}
+                                        value="PresidenteJuan5"
+                                        name="PresidenteJuan5"
+                                        inputProps={{ 'aria-label': 'PresidenteJuan5' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.VotoBlanco}
+                                    <TableCell align="right">{row.EstebanRuiz}
                                     <Radio
-                                        onChange={handleChange1}
-                                        checked={selectedValue1 === 'c'}
-                                        value="c"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'C' }}
+                                        id="VotoBlanco6"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'VotoBlanco6'}
+                                        value="VotoBlanco6"
+                                        name="VotoBlanco6"
+                                        inputProps={{ 'aria-label': 'VotoBlanco6' }}
                                         />
                                     </TableCell>
                                     </TableRow>
@@ -217,31 +209,34 @@ const [selectedValue2, setSelectedValue2] = React.useState('a');
                                     <TableCell component="th" scope="row">
                                         {row.name}
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteLuis}
+                                    <TableCell align="right">{row.MaríaBernar}
                                     <Radio
-                                        onChange={handleChange2}
-                                        checked={selectedValue2 === 'a'}
-                                        value="a"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'A' }}
+                                        id="PresidenteLuis7"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteLuis7'}
+                                        value="PresidenteLuis7"
+                                        name="PresidenteLuis7"
+                                        inputProps={{ 'aria-label': 'PresidenteLuis7' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.PresidenteJuan}
+                                    <TableCell align="right">{row.MaríaBernar}
                                     <Radio
-                                        onChange={handleChange2}
-                                        checked={selectedValue2 === 'b'}
-                                        value="b"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'B' }}
+                                        id="PresidenteJuan8"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'PresidenteJuan8'}
+                                        value="PresidenteJuan8"
+                                        name="PresidenteJuan8"
+                                        inputProps={{ 'aria-label': 'PresidenteJuan8' }}
                                         />
                                     </TableCell>
-                                    <TableCell align="right">{row.VotoBlanco}
+                                    <TableCell align="right">{row.MaríaBernar}
                                     <Radio
-                                        onChange={handleChange2}
-                                        checked={selectedValue2 === 'c'}
-                                        value="c"
-                                        name="radio-button-demo"
-                                        inputProps={{ 'aria-label': 'C' }}
+                                        id="VotoBlanco9"
+                                        onChange={handleChange}
+                                        checked={selectedValue === 'VotoBlanco9'}
+                                        value="VotoBlanco9"
+                                        name="VotoBlanco9"
+                                        inputProps={{ 'aria-label': 'VotoBlanco9' }}
                                         />
                                     </TableCell>
                                     </TableRow>
@@ -414,3 +409,11 @@ export default BotonesRadio;
 createData('Esteban Ruiz–Socio: 346',),
 createData('Sonia Marín–Socio: 6506',),
 createData('Juan Manuel – Socio: 5461', 356, 16.0, 49),*/
+
+/*function createData2(name, PresidenteLuis, PresidenteJuan, VotoBlanco) {
+            return { name, PresidenteLuis, PresidenteJuan, VotoBlanco};
+        }
+
+        const rows2 = [
+            createData2('Esteban Ruiz–Socio: 346')
+        ];*/
