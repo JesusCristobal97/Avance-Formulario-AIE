@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import style from '../Tool/Style';
-import { Container, TextField, Typography, Grid, Box } from '@material-ui/core';
+import { Container, TextField, Typography, Grid, Box, Button } from '@material-ui/core';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Radio from '@material-ui/core/Radio';
+import { useHistory } from 'react-router-dom';
 
 
 
 const Juego = () => {
 
     const [data, setData]=useState('');
+
+    //Navegacion entre paginas//
+
+    const history = useHistory();
+    const BotonSiguiente = () => history.push('/auth/acceso');
+
     //Funcion para los editores de textos
+
     const handleChange =(e,editor)=>{
         setData(editor.getData());
     }
@@ -284,6 +292,14 @@ const Juego = () => {
                                 />
                             </Grid>
                         </Grid>
+                        <Grid item xs={12} md={12}>
+                            <Box width="20%" margin="auto">
+                                <Button onClick={BotonSiguiente} type="submit" variant="contained" color="primary" style={style.form} >
+                                    volver a Acceso
+                                </Button>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={12}></Grid>
                     </Box>
                 </form>
             </div>

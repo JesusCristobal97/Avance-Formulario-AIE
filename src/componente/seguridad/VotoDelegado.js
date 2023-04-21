@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import style from '../Tool/Style';
 import { Avatar, Button, Container, Typography, Grid, Box, List, ListItemText } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom';
 
 
     const VotoDelegado = () => {
@@ -13,6 +14,13 @@ import Swal from 'sweetalert2'
             Votose : '70',
             Votodelegado : '180'
             });
+
+    //Navegacion entre paginas//
+
+    const history = useHistory();
+    const BotonSiguiente = () => history.push('/auth/enviar');
+
+    //Alert//
 
     const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -88,6 +96,14 @@ import Swal from 'sweetalert2'
                             <Box width="20%" margin="auto">
                                 <Button onClick={()=>swalWithBootstrapButtons()} type="submit" variant="contained" color="primary" style={style.form} >
                                     Enviar Voto
+                                </Button>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={12}></Grid>
+                        <Grid item xs={12} md={12}>
+                            <Box width="20%" margin="auto">
+                                <Button onClick={BotonSiguiente} type="submit" variant="contained" color="primary" style={style.form} >
+                                    Siguiente Pagina
                                 </Button>
                             </Box>
                         </Grid>

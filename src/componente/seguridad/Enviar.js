@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from '../Tool/Style';
 import { Avatar, Button, Container, Typography, Grid, Box, ListItemText, List } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
+import { useHistory } from 'react-router-dom';
 
 
 const Enviar = () => {
@@ -12,6 +13,13 @@ const Enviar = () => {
         Votose : '70',
         Votodelegado : '180'
         });
+
+    //Navegacion entre paginas//
+
+    const history = useHistory();
+    const BotonSiguiente = () => history.push('/auth/botonesradio');
+
+    //Enviar resultados//
 
     const BotonEnviar = e => {
         e.preventDefault();
@@ -210,6 +218,14 @@ const Enviar = () => {
                         </Grid>
                         <Grid item xs={12} md={1}></Grid>
 
+                        <Grid item xs={12} md={12}></Grid>
+                        <Grid item xs={12} md={12}>
+                            <Box width="20%" margin="auto">
+                                <Button onClick={BotonSiguiente} type="submit" variant="contained" color="primary" style={style.form} >
+                                    Siguiente Pagina
+                                </Button>
+                            </Box>
+                        </Grid>
                         <Grid item xs={12} md={12}></Grid>
 
                     </Grid>

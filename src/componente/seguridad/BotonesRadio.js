@@ -11,7 +11,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Radio from '@material-ui/core/Radio';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom';
+
 
 
     const BotonesRadio = () => {
@@ -22,12 +24,21 @@ import Swal from 'sweetalert2'
         EstebanRuiz : ''
         });
 
+    //Navegacion entre paginas//
+    
+    const history = useHistory();
+    const BotonSiguiente = () => history.push('/auth/imprimevoto');
+
+    // Botones de Radio //
+
     const [selectedValue, setSelectedValue] = React.useState('a');
     
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
         console.log(selectedValue)
         };
+
+    // Tabla //
     
         const useStyles = makeStyles({
             table: {
@@ -49,10 +60,11 @@ import Swal from 'sweetalert2'
         
         const rows2 = [
             createData('María Bernar–Socio: 798465')
-        ];//, 'Esteban Ruiz–Socio: 346', 'María Bernar–Socio: 798465'//
-
+        ];
     
         const classes = useStyles();
+
+        // Alert //
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
@@ -87,6 +99,8 @@ import Swal from 'sweetalert2'
             )
             }
         });
+
+        //Enviar resultados//
         
         const BotonEnviar = e => {
             e.preventDefault();
@@ -393,6 +407,14 @@ import Swal from 'sweetalert2'
                         </Grid>
                         <Grid item xs={12} md={1}></Grid>
 
+                        <Grid item xs={12} md={12}></Grid>
+                        <Grid item xs={12} md={12}>
+                            <Box width="20%" margin="auto">
+                                <Button onClick={BotonSiguiente} type="submit" variant="contained" color="primary" style={style.form} >
+                                    Siguiente Pagina
+                                </Button>
+                            </Box>
+                        </Grid>
                         <Grid item xs={12} md={12}></Grid>
 
                     </Grid>

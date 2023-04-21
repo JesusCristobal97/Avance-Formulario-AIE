@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import style from '../Tool/Style';
 import { Avatar, Button, Container, TextField, Typography, Grid, Box } from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
+import { useHistory } from 'react-router-dom';
+
 
 
 const Acceso = () => {
@@ -9,6 +11,13 @@ const Acceso = () => {
     const [usuario, setUsuario] = useState({
         password :''
         });
+
+    //navegacion entre Paginas//
+
+    const history = useHistory();
+    const BotonSiguiente = () => history.push('/auth/votodelegado');
+
+    //Validacion//
 
     const [ErrorPassword, setErrorPassword] = useState(0);
     
@@ -41,11 +50,13 @@ const Acceso = () => {
         setUsuario(value);
     }
 
+    //Envio de resultados//
+
     const BotonAcceso = e => {
         e.preventDefault();
         console.log("Imprime los valores de memoria temporal de usuario", usuario);
     }
-
+    
     return (
         <Container component="main" maxWidth="md" justify="center">
         <div style={style.paper}>
@@ -104,6 +115,14 @@ const Acceso = () => {
                             <Box width="20%" margin="auto">
                                 <Button onClick={BotonAcceso} type="submit" variant="contained" color="primary" style={style.form} >
                                     Enviar
+                                </Button>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={12}></Grid>
+                        <Grid item xs={12} md={12}>
+                            <Box width="20%" margin="auto">
+                                <Button onClick={BotonSiguiente} type="submit" variant="contained" color="primary" style={style.form} >
+                                    Siguiente Pagina
                                 </Button>
                             </Box>
                         </Grid>
